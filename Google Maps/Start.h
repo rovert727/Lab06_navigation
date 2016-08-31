@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
 
-extern long latitude;
-extern long longitude;
+
+extern float latitude;
+extern float longitude;
 @interface Start : UIViewController<CLLocationManagerDelegate,GMSMapViewDelegate>
 
 

@@ -12,8 +12,8 @@
 
 @import GoogleMaps;
 
-long latitude;
-long longitude;
+float latitude;
+float longitude;
 
 @interface Start ()
 
