@@ -2,8 +2,8 @@
 //  ViewController.m
 //  Google Maps
 //
-//  Created by xax on 8/11/16.
-//  Copyright © 2016 xax. All rights reserved.
+//  Created by Jose Rodriguez 8/11/16.
+//  Copyright © 2016 Jose. All rights reserved.
 //
 #import "Start.h"
 #import <Google/Analytics.h>
@@ -14,6 +14,7 @@
 
 float latitude;
 float longitude;
+int counter;
 
 @interface Start ()
 
@@ -27,6 +28,7 @@ float longitude;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createMap];
+    
     //[self viewWillAppear];
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -54,15 +56,32 @@ float longitude;
 /**********************************************************************************************/
 
 - (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    if(counter==5){
+        counter=0;
     [mapView_ clear];
+        }
+    counter++;
     GMSMarker *marker = [[GMSMarker alloc] init];
+    GMSMarker *marker1 = [[GMSMarker alloc] init];
+    GMSMarker *marker2 = [[GMSMarker alloc] init];
+    GMSMarker *marker3 = [[GMSMarker alloc] init];
+    GMSMarker *marker4 = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker1.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker2.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker3.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    marker4.position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
     /*Global variables to share the coordinate*/
     latitude=coordinate.latitude;
     longitude=coordinate.longitude;
     
     marker.map = mapView_;
-    [self performSegueWithIdentifier:@"Details" sender:self];
+    marker1.map = mapView_;
+    marker3.map = mapView_;
+    marker2.map = mapView_;
+    marker4.map = mapView_;
+    
+   
 }
 
 /**********************************************************************************************/
